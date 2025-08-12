@@ -1,0 +1,698 @@
+/* --- Estilos Base y Branding "OK Latino" --- */
+:root {
+    --brand-red: #cb0000;
+    --brand-red-hover: #ff0000;
+    --dark-gray: #2d3748;
+    --light-gray: #f8f9fa;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Se elimina 'scroll-behavior: smooth;' para que Lenis tome el control total. */
+    color: var(--dark-gray);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.header.scrolled {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.header.scrolled .h-10 {
+    height: 2rem;
+    /* 32px */
+}
+
+.btn-primary {
+    background: var(--brand-red);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-primary:hover {
+    background: var(--brand-red-hover);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 7px 20px rgba(203, 0, 0, 0.35);
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    border: 2px solid #ff0000;
+    /* Borde blanco para contraste */
+    color: white;
+    color: var(--brand-red);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    /* Fondo blanco al pasar el mouse */
+    color: var(--brand-red);
+    /* Texto rojo al pasar el mouse */
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.2);
+}
+
+
+/* --- Sección Hero --- */
+.hero {
+    position: relative;
+}
+
+.hero-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.text-outline {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Elementos Interactivos --- */
+.hover\:text-brand-red:hover {
+    color: var(--brand-red);
+}
+
+.focus\:border-brand-red:focus {
+    border-color: var(--brand-red);
+    box-shadow: 0 0 0 3px rgba(203, 0, 0, 0.2);
+}
+
+/* --- Tarjetas de Servicios Mejoradas --- */
+.service-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-top: 4px solid #e2e8f0;
+    box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.08);
+    /* GSAP se encargará ahora de la aparición, así que ocultamos por defecto */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.12), 0 10px 20px -10px rgba(0, 0, 0, 0.1);
+    border-top-color: var(--brand-red);
+}
+
+.service-card.tapped {
+    transform: translateY(-12px) scale(0.98);
+    box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15);
+}
+
+.service-card.highlighted {
+    border-top-color: var(--brand-red);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes subtle-glow {
+    0% {
+        box-shadow: 0 0 15px -5px rgba(203, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 25px 0px rgba(203, 0, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 15px -5px rgba(203, 0, 0, 0.3);
+    }
+}
+
+.service-card.highlighted {
+    animation: subtle-glow 3s infinite ease-in-out;
+}
+
+.service-card-popular-tag {
+    background-color: var(--brand-red);
+}
+
+.text-brand-red {
+    color: var(--brand-red);
+}
+
+/* --- Testimonios y Equipo --- */
+.testimonial-controls button.active {
+    background-color: var(--brand-red);
+}
+
+.team-member:hover .team-member-img {
+    border-color: var(--brand-red);
+    transform: scale(1.05);
+}
+
+/* --- Menú Móvil --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        transform: translateY(-100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .nav-menu.open {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transform: translateY(0);
+    }
+}
+
+/* --- Botones Flotantes --- */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+}
+
+.messenger-btn {
+    background-color: #00B2FF;
+}
+
+/* Contenedor del video */
+.video-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- INICIO: ESTILOS DE ANIMACIÓN DE CRECIMIENTO DE NEGOCIO --- */
+#process-animation-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.process-ingredient {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -80px);
+    text-align: center;
+    width: 120px;
+    opacity: 0;
+    color: #DC2626;
+    z-index: 5;
+    transition: opacity 0.5s ease-out, transform 1.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.business-stage {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0.8);
+    font-size: 8rem;
+    color: #e5e7eb;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, color 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.business-stage.active {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+    color: #DC2626;
+}
+
+.business-stage.active img {
+    filter: invert(19%) sepia(82%) saturate(3744%) hue-rotate(347deg) brightness(93%) contrast(91%);
+}
+
+.result-display {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translate(-50%, 50px);
+    opacity: 0;
+    text-align: center;
+    z-index: 20;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- FIN: ESTILOS DE ANIMACIÓN DE CRECIMIENTO DE NEGOCIO --- */
+
+/* --- Animación de Pulso para Imagen --- */
+@keyframes pulse-custom {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(203, 0, 0, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 25px rgba(203, 0, 0, 0);
+    }
+}
+
+.animate-pulse-custom {
+    animation: pulse-custom 2.5s infinite;
+}
+
+/* --- Se elimina la clase .animate-on-scroll; GSAP la reemplaza --- */
+.gsap-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* NUEVO: Fondo con textura sutil para secciones */
+.section-textured-bg {
+    background-color: var(--light-gray);
+    background-image: radial-gradient(#e9ecef 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* NUEVO: Divisor de sección en ángulo */
+.angled-divider {
+    position: relative;
+    height: 100px;
+    background-color: white;
+    /* Color de la sección de abajo */
+}
+
+.angled-divider::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var(--light-gray);
+    /* Color de la sección de arriba */
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+/* --- Estilos para botones de play en imágenes del equipo --- */
+.team-member .relative {
+    position: relative;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(203, 0, 0, 0.9);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(203, 0, 0, 0.4);
+}
+
+.play-btn:hover {
+    background: var(--brand-red-hover);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(203, 0, 0, 0.6);
+}
+
+.play-btn:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* Mostrar botón al hacer hover en el contenedor de la imagen */
+.team-member:hover .play-btn {
+    opacity: 1;
+}
+
+/* Efecto de overlay en la imagen al hacer hover */
+.team-member:hover .team-member-img {
+    filter: brightness(0.7);
+}
+
+/* --- 🎥 MODAL OPTIMIZADO PARA VIDEOS VERTICALES --- */
+
+/* Modal principal - Ajustado para videos verticales */
+.video-modal-content {
+    border: 3px solid var(--brand-red);
+    animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    max-width: 500px; /* Ancho máximo para videos verticales */
+    width: 90%;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Optimización específica para videos verticales */
+.vertical-video-optimized {
+    max-width: 450px !important; /* Ancho optimizado para videos verticales */
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Header del modal mejorado */
+.video-modal-header {
+    background: linear-gradient(135deg, var(--brand-red), #ff0000);
+    color: white;
+    border-radius: 1.5rem 1.5rem 0 0;
+    flex-shrink: 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+
+/* ✅ NOMBRE EN BLANCO */
+#modal-member-name {
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones de control mejorados */
+.close-video-btn {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.close-video-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-video-btn {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.nav-video-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.05);
+}
+
+.nav-video-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-video-btn:disabled:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Contenedor del video optimizado */
+.video-container-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-grow: 1;
+    background: #f8f9fa;
+    min-height: 300px;
+}
+
+/* Video optimizado para formato vertical */
+#team-video {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    background: #000;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(203, 0, 0, 0.2);
+}
+
+/* Indicadores mejorados */
+.member-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+}
+
+.member-indicator.active {
+    background: var(--brand-red);
+    transform: scale(1.3);
+    box-shadow: 0 3px 12px rgba(203, 0, 0, 0.5);
+    border-color: rgba(203, 0, 0, 0.3);
+}
+
+.member-indicator:hover {
+    background: var(--brand-red);
+    opacity: 0.8;
+    transform: scale(1.15);
+    box-shadow: 0 2px 8px rgba(203, 0, 0, 0.3);
+}
+
+/* Estados de carga del video */
+.video-loading {
+    position: relative;
+}
+
+.video-loading::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45px;
+    height: 45px;
+    margin: -22px 0 0 -22px;
+    border: 4px solid rgba(203, 0, 0, 0.2);
+    border-top: 4px solid var(--brand-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 100;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- RESPONSIVE DESIGN PARA VIDEOS VERTICALES --- */
+
+/* Desktop - Videos verticales */
+@media (min-width: 768px) {
+    .video-modal-content {
+        max-width: 480px;
+    }
+    
+    .vertical-video-optimized {
+        max-width: 420px !important;
+    }
+    
+    #team-video {
+        max-width: 380px;
+        max-height: 65vh;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) and (min-width: 481px) {
+    .video-modal-content {
+        max-width: 400px;
+        margin: 20px;
+    }
+    
+    #team-video {
+        max-height: 60vh;
+    }
+    
+    .video-container-modal {
+        padding: 16px;
+    }
+    
+    #modal-member-name {
+        font-size: 1.1rem;
+    }
+    
+    .nav-video-btn,
+    .close-video-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+}
+
+/* Móviles - Videos verticales */
+@media (max-width: 480px) {
+    .play-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        opacity: 1; /* Siempre visible en móviles */
+    }
+    
+    .team-member-img {
+        filter: brightness(0.8); /* Ligero oscurecimiento para mejor contraste */
+    }
+    
+    .video-modal-content {
+        max-width: 95vw;
+        margin: 10px;
+        max-height: 90vh;
+    }
+    
+    .vertical-video-optimized {
+        max-width: 95vw !important;
+    }
+    
+    .video-modal-header {
+        padding: 12px 16px;
+        min-height: 55px;
+    }
+    
+    .video-container-modal {
+        padding: 12px;
+    }
+    
+    #modal-member-name {
+        font-size: 1rem;
+    }
+    
+    .nav-video-btn,
+    .close-video-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    #team-video {
+        max-height: 55vh;
+        border-radius: 8px;
+    }
+    
+    .member-indicator {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Landscape mode en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    #team-video {
+        max-height: 65vh;
+        max-width: 45vw;
+    }
+    
+    .video-modal-content {
+        max-height: 95vh;
+    }
+    
+    .vertical-video-optimized {
+        max-width: 50vw !important;
+    }
+}
+
+/* Animación de pulso para llamar la atención en móviles */
+@media (max-width: 768px) {
+    .play-btn {
+        animation: mobilePulse 2.5s infinite;
+    }
+    
+    @keyframes mobilePulse {
+        0%, 100% {
+            box-shadow: 0 4px 15px rgba(203, 0, 0, 0.4);
+        }
+        50% {
+            box-shadow: 0 4px 25px rgba(203, 0, 0, 0.7);
+        }
+    }
+}
