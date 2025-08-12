@@ -94,6 +94,7 @@ body {
     /* GSAP se encargará ahora de la aparición, así que ocultamos por defecto */
     opacity: 0;
     transform: translateY(30px);
+    position: relative; /* Para posicionar el badge de oferta */
 }
 
 .service-card:hover {
@@ -137,6 +138,134 @@ body {
 
 .text-brand-red {
     color: var(--brand-red);
+}
+
+/* --- 🏷️ ESTILOS DE OFERTA Y PRECIOS --- */
+
+/* Badge de oferta */
+.offer-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    transform: rotate(12deg);
+}
+
+.offer-badge.special {
+    top: 45px; /* Ajuste para el paquete completo que tiene otro badge */
+}
+
+.offer-text {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+    display: inline-block;
+    position: relative;
+    animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Contenedor de precios */
+.price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Precio tachado (original) */
+.old-price {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-weight: 500;
+    position: relative;
+}
+
+.old-price::before {
+    content: 'Antes:';
+    font-size: 0.75rem;
+    color: #6b7280;
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Precio nuevo (con descuento) */
+.new-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--brand-red);
+    text-shadow: 0 2px 4px rgba(203, 0, 0, 0.2);
+    position: relative;
+}
+
+.new-price.special {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, var(--brand-red), #ff0000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: priceGlow 3s infinite;
+}
+
+@keyframes priceGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(203, 0, 0, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 16px rgba(203, 0, 0, 0.6));
+    }
+}
+
+.new-price::after {
+    content: '40% OFF';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+/* Estilos responsivos para precios */
+@media (max-width: 768px) {
+    .old-price {
+        font-size: 1rem;
+    }
+    
+    .old-price::before {
+        left: -30px;
+        font-size: 0.7rem;
+    }
+    
+    .new-price {
+        font-size: 2rem;
+    }
+    
+    .new-price.special {
+        font-size: 2.2rem;
+    }
+    
+    .offer-text {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
 }
 
 /* --- Testimonios y Equipo --- */
