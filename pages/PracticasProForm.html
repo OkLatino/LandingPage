@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prácticas Profesionales - OK Latino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-red: #cb0000;
+            --brand-red-dark: #a00000;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('../assets/WEBHERO.jpg') center center / cover no-repeat fixed;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 10px 40px rgba(203, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--brand-red);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content i.fa-users {
+            display: block;
+            opacity: 0.95;
+        }
+
+        .logo {
+            height: 70px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+            max-width: 100%;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .form-content {
+            padding: 40px 30px;
+        }
+
+        .info-box {
+            background: var(--gray-50);
+            border-left: 4px solid var(--brand-red);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .info-box p {
+            color: var(--gray-700);
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .info-box strong {
+            color: var(--brand-red);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .info-box p {
+                font-size: 1em !important;
+            }
+
+            .info-box strong {
+                font-size: 1.1em !important;
+            }
+        }
+
+        .section-title {
+            color: var(--brand-red);
+            font-size: 1.4em;
+            font-weight: 700;
+            margin: 35px 0 25px 0;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--brand-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 0.9em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gray-700);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .required {
+            color: var(--brand-red);
+            margin-left: 3px;
+        }
+
+        small {
+            font-weight: 400;
+            color: var(--gray-500);
+            font-size: 0.85em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--brand-red);
+            box-shadow: 0 0 0 3px rgba(203, 0, 0, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 2px solid var(--gray-100);
+        }
+
+        .checkbox-item:hover,
+        .radio-item:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-200);
+        }
+
+        .checkbox-item input:checked ~ label,
+        .radio-item input:checked ~ label {
+            color: var(--brand-red);
+            font-weight: 600;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--brand-red);
+        }
+
+        .checkbox-item label,
+        .radio-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+            flex: 1;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--brand-red);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(203, 0, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: var(--brand-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(203, 0, 0, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .header p {
+                font-size: 1em;
+            }
+
+            .header p:first-of-type {
+                font-size: 1.2em !important;
+            }
+
+            .form-content {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.2em;
+            }
+
+            .logo {
+                height: 55px;
+            }
+
+            .header-content i.fa-users {
+                font-size: 2.5em !important;
+            }
+        }
+
+        /* Animación de entrada */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-content {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <i class="fas fa-users" style="font-size: 3em; margin-bottom: 15px;"></i>
+                <img src="../assets/OKLTWEB.png" alt="OK Latino Logo" class="logo">
+                <p style="font-size: 1.4em; font-weight: 600; margin-bottom: 8px;">¿Estudias Marketing o Comunicación?</p>
+                <p style="font-size: 1em; font-weight: 400;">Realiza tus prácticas profesionales con nosotros</p>
+            </div>
+        </div>
+
+        <div class="form-content">
+            <div class="info-box">
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    <strong style="font-size: 1.2em; display: block; margin-bottom: 10px;">¿Estudias Marketing o Comunicación?</strong>
+                    Realiza tus prácticas profesionales con nosotros y adquiere experiencia real en una agencia certificada por Meta.
+                </p>
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #e5e7eb;">
+                    <p style="display: flex; align-items: center; gap: 8px; font-size: 0.95em; color: var(--gray-600);">
+                        <i class="fas fa-check-circle" style="color: var(--brand-red);"></i>
+                        <span><strong>Experiencia real</strong> • <strong>Certificación Meta</strong> • <strong>Mentoría profesional</strong></span>
+                    </p>
+                </div>
+            </div>
+
+            <form id="internshipForm" action="https://formspree.io/f/xzzjaoez" method="POST">
+                <!-- Campo oculto para identificar el formulario -->
+                <input type="hidden" name="_subject" value="Nueva solicitud de Práctica Profesional - OK Latino">
+                
+                <!-- Honeypot para prevenir spam -->
+                <input type="text" name="_gotcha" style="display:none">
+                
+                <div class="section-title">
+                    <i class="fas fa-user"></i>
+                    Información Personal
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre completo <span class="required">*</span></label>
+                    <input type="text" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Universidad/Institución <span class="required">*</span></label>
+                    <input type="text" name="universidad" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Carrera <span class="required">*</span></label>
+                    <input type="text" name="carrera" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Semestre que cursas <span class="required">*</span></label>
+                    <select name="semestre" required>
+                        <option value="">Selecciona un semestre</option>
+                        <option value="1">Primer semestre</option>
+                        <option value="2">Segundo semestre</option>
+                        <option value="3">Tercer semestre</option>
+                        <option value="4">Cuarto semestre</option>
+                        <option value="5">Quinto semestre</option>
+                        <option value="6">Sexto semestre</option>
+                        <option value="7">Séptimo semestre</option>
+                        <option value="8">Octavo semestre</option>
+                        <option value="9">Noveno semestre</option>
+                        <option value="10">Décimo semestre o más</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Edad <span class="required">*</span></label>
+                    <input type="number" name="edad" min="17" max="99" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono <span class="required">*</span></label>
+                    <input type="tel" name="telefono" placeholder="Ej: 5512345678" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico <span class="required">*</span></label>
+                    <input type="email" name="correo" required>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Disponibilidad
+                </div>
+
+                <div class="form-group">
+                    <label>¿Cuándo puedes iniciar tu práctica? <span class="required">*</span></label>
+                    <select name="fechaInicio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="inmediato">Inmediatamente</option>
+                        <option value="1-2semanas">En 1-2 semanas</option>
+                        <option value="1mes">En 1 mes</option>
+                        <option value="2meses">En 2 meses</option>
+                        <option value="otro">Otra fecha (especificar en comentarios)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Duración de práctica requerida por tu institución <span class="required">*</span></label>
+                    <select name="duracion" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="3meses">3 meses</option>
+                        <option value="6meses">6 meses</option>
+                        <option value="1año">1 año</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Horario de disponibilidad <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="matutino" name="horario" value="matutino">
+                            <label for="matutino">Matutino (8:00 AM - 2:00 PM)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="vespertino" name="horario" value="vespertino">
+                            <label for="vespertino">Vespertino (2:00 PM - 8:00 PM)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tiempoCompleto" name="horario" value="tiempoCompleto">
+                            <label for="tiempoCompleto">Tiempo completo (8:00 AM - 6:00 PM)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="flexible" name="horario" value="flexible">
+                            <label for="flexible">Horario flexible</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-comments"></i>
+                    Sobre la Conferencia
+                </div>
+
+                <div class="form-group">
+                    <label>¿Qué te llamó la atención de la conferencia? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contenido" name="atencion" value="contenido">
+                            <label for="contenido">El contenido presentado</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ponente" name="atencion" value="ponente">
+                            <label for="ponente">El ponente/expositor</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="oportunidad" name="atencion" value="oportunidad">
+                            <label for="oportunidad">La oportunidad de prácticas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="empresa" name="atencion" value="empresa">
+                            <label for="empresa">La empresa OK Latino</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="casos" name="atencion" value="casos">
+                            <label for="casos">Los casos de éxito compartidos</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="herramientas" name="atencion" value="herramientas">
+                            <label for="herramientas">Las herramientas y técnicas mostradas</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-star"></i>
+                    Habilidades y Fortalezas
+                </div>
+
+                <div class="form-group">
+                    <label>¿Qué habilidad o habilidades sientes que es tu fortaleza? <span class="required">*</span> <small>(Selecciona todas las que apliquen)</small></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="edicionVideo" name="habilidades" value="edicionVideo">
+                            <label for="edicionVideo">Edición de video</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="edicionAudio" name="habilidades" value="edicionAudio">
+                            <label for="edicionAudio">Edición de audio</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="locucion" name="habilidades" value="locucion">
+                            <label for="locucion">Locución</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="conduccion" name="habilidades" value="conduccion">
+                            <label for="conduccion">Conducción</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="estrategias" name="habilidades" value="estrategias">
+                            <label for="estrategias">Estrategias de marketing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ventas" name="habilidades" value="ventas">
+                            <label for="ventas">Ventas y atención al cliente</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rrpp" name="habilidades" value="rrpp">
+                            <label for="rrpp">Relaciones públicas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="periodismo" name="habilidades" value="periodismo">
+                            <label for="periodismo">Periodismo</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="facebook" name="habilidades" value="facebook">
+                            <label for="facebook">Facebook (gestión de contenido)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="instagram" name="habilidades" value="instagram">
+                            <label for="instagram">Instagram (gestión de contenido)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tiktok" name="habilidades" value="tiktok">
+                            <label for="tiktok">TikTok (gestión de contenido)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ia" name="habilidades" value="ia">
+                            <label for="ia">Inteligencia Artificial (IA)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="disenoGrafico" name="habilidades" value="disenoGrafico">
+                            <label for="disenoGrafico">Diseño gráfico</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="copywriting" name="habilidades" value="copywriting">
+                            <label for="copywriting">Copywriting / Redacción creativa</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Software o herramientas que dominas <small>(Ej: Adobe Premiere, Photoshop, Canva, etc.)</small></label>
+                    <textarea name="software" placeholder="Menciona las herramientas que sabes utilizar..."></textarea>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Experiencia y Motivación
+                </div>
+
+                <div class="form-group">
+                    <label>¿Tienes experiencia previa en marketing o comunicación?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="expSi" name="experiencia" value="si">
+                            <label for="expSi">Sí, tengo experiencia</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="expNo" name="experiencia" value="no">
+                            <label for="expNo">No, esta sería mi primera experiencia</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="expProyectos" name="experiencia" value="proyectos">
+                            <label for="expProyectos">Solo proyectos escolares</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Si tienes experiencia, cuéntanos brevemente</label>
+                    <textarea name="detalleExperiencia" placeholder="Describe tu experiencia previa..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Por qué quieres hacer tu práctica profesional en OK Latino? <span class="required">*</span></label>
+                    <textarea name="motivacion" required placeholder="Cuéntanos qué te motiva a unirte a nuestro equipo..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Qué esperas aprender durante tu práctica profesional? <span class="required">*</span></label>
+                    <textarea name="expectativas" required placeholder="Describe tus expectativas y objetivos..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Portafolio o trabajo previo <small>(Opcional - Comparte el link de tu portafolio, Behance, Instagram, etc.)</small></label>
+                    <input type="url" name="portafolio" placeholder="https://">
+                </div>
+
+                <div class="form-group">
+                    <label>Comentarios adicionales</label>
+                    <textarea name="comentarios" placeholder="¿Algo más que quieras compartir con nosotros?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('internshipForm').addEventListener('submit', function(e) {
+            // Validar que se haya seleccionado al menos una opción en los checkboxes requeridos
+            const atencionCheckboxes = document.querySelectorAll('input[name="atencion"]:checked');
+            const habilidadesCheckboxes = document.querySelectorAll('input[name="habilidades"]:checked');
+            const horarioCheckboxes = document.querySelectorAll('input[name="horario"]:checked');
+            
+            if (atencionCheckboxes.length === 0) {
+                e.preventDefault();
+                alert('Por favor selecciona al menos una opción en "¿Qué te llamó la atención de la conferencia?"');
+                return;
+            }
+            
+            if (habilidadesCheckboxes.length === 0) {
+                e.preventDefault();
+                alert('Por favor selecciona al menos una habilidad o fortaleza');
+                return;
+            }
+
+            if (horarioCheckboxes.length === 0) {
+                e.preventDefault();
+                alert('Por favor selecciona tu horario de disponibilidad');
+                return;
+            }
+            
+            // Si todas las validaciones pasan, el formulario se enviará a Formspree automáticamente
+        });
+
+        // Efecto visual al seleccionar checkboxes
+        document.querySelectorAll('.checkbox-item, .radio-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Solo activar el checkbox/radio si no se hizo click directamente en el input
+                if (e.target.tagName !== 'INPUT') {
+                    const input = this.querySelector('input[type="checkbox"], input[type="radio"]');
+                    if (input) {
+                        if (input.type === 'checkbox') {
+                            input.checked = !input.checked;
+                        } else if (input.type === 'radio') {
+                            input.checked = true;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
