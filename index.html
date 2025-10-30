@@ -77,7 +77,7 @@
         </section>
 
         <div class="video-container gsap-fade-up">
-            <video src="assets/OK LATINO. FACEBOOK BUSINESS PARTNER.mp4" autoplay loop muted controls playsinline>
+            <video src="assets/VIDEO OK LATINO EVOLUCION.mp4" autoplay loop muted controls playsinline>
                 Lo sentimos, tu navegador no soporta la etiqueta de video.
             </video>
         </div>
@@ -306,8 +306,8 @@
                                 <span class="new-price">$3,500</span>
                             </div>
                             <p class="text-sm text-gray-500 mb-4">Precio final - Pago único</p>
-                            <a href="#" data-package="Gestión de Anuncios" data-price="$3,500 /pago único"
-                                class="service-button btn-primary inline-block w-full py-2 px-4 font-medium rounded-lg">Contratar Ahora</a>
+                            <a href="https://wa.me/522211780331?text=Hola,%20estoy%20interesado%20en%20el%20paquete%20de%20*Gestión%20de%20Anuncios*%20por%20$3,500%20(pago%20único)"
+                                class="btn-primary inline-block w-full py-2 px-4 font-medium rounded-lg" target="_blank">Contratar Ahora</a>
                         </div>
                     </div>
                     
@@ -338,8 +338,8 @@
                                 <span class="new-price">$9,000</span>
                             </div>
                             <p class="text-sm text-gray-500 mb-4">Precio final - Pago único</p>
-                            <a href="#" data-package="Marketing + Gestión de Anuncios" data-price="$9,000 /pago único"
-                                class="service-button btn-primary inline-block w-full py-2 px-4 font-medium rounded-lg">Contratar Ahora</a>
+                            <a href="https://wa.me/522211780331?text=Hola,%20estoy%20interesado%20en%20el%20paquete%20de%20*Marketing%20+%20Gestión%20de%20Anuncios*%20por%20$9,000%20(pago%20único)"
+                                class="btn-primary inline-block w-full py-2 px-4 font-medium rounded-lg" target="_blank">Contratar Ahora</a>
                         </div>
                     </div>
                     
@@ -371,8 +371,8 @@
                                 <span class="new-price">$7,500</span>
                             </div>
                             <p class="text-sm text-gray-500 mb-4">Precio final - Pago único</p>
-                            <a href="#" data-package="Landing Page con E-commerce" data-price="$7,500 /pago único"
-                                class="service-button btn-primary inline-block w-full py-2 px-4 font-medium rounded-lg">Contratar Ahora</a>
+                            <a href="https://wa.me/522211780331?text=Hola,%20estoy%20interesado%20en%20el%20paquete%20de%20*Landing%20Page%20con%20E-commerce*%20por%20$7,500%20(pago%20único)"
+                                class="btn-primary inline-block w-full py-2 px-4 font-medium rounded-lg" target="_blank">Contratar Ahora</a>
                         </div>
                     </div>
                     
@@ -406,8 +406,8 @@
                                 <span class="new-price special">$14,500</span>
                             </div>
                             <p class="text-sm text-gray-500 mb-4">Precio final - Pago único</p>
-                            <a href="#" data-package="Paquete Completo" data-price="$14,500 /pago único"
-                                class="service-button btn-secondary inline-block w-full py-2 px-4 font-medium rounded-lg">¡Empezar
+                            <a href="https://wa.me/522211780331?text=Hola,%20estoy%20interesado%20en%20el%20*Paquete%20Completo*%20por%20$14,500%20(pago%20único)"
+                                class="btn-secondary inline-block w-full py-2 px-4 font-medium rounded-lg" target="_blank">¡Empezar
                                 Ahora!</a>
                         </div>
                     </div>
@@ -676,53 +676,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- MODAL DE PAGO -->
-    <div id="payment-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full relative">
-            <button id="close-modal"
-                class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl font-bold">&times;</button>
-            <h2 class="text-2xl font-bold mb-2 text-gray-800">Completa tu Compra</h2>
-            <p class="text-gray-500 mb-6">Estás a un paso de impulsar tu negocio.</p>
-
-            <div class="mb-6 border-t border-b py-4">
-                <p class="text-gray-600">Has seleccionado:</p>
-                <p id="modal-package-name" class="text-xl font-semibold text-brand-red"></p>
-                <p id="modal-package-price" class="text-2xl font-bold text-gray-800"></p>
-            </div>
-
-            <form id="payment-form">
-                <div class="mb-4">
-                    <label for="card-name" class="block text-gray-700 mb-2 font-medium">Nombre en la Tarjeta</label>
-                    <input type="text" id="card-name" placeholder="Juan Pérez"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red"
-                        required>
-                </div>
-                <div class="mb-4">
-                    <label for="card-number" class="block text-gray-700 mb-2 font-medium">Número de Tarjeta</label>
-                    <input type="text" id="card-number" placeholder="**** **** **** ****"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red"
-                        required>
-                </div>
-                <div class="flex gap-4 mb-6">
-                    <div class="w-1/2">
-                        <label for="expiry-date" class="block text-gray-700 mb-2 font-medium">Vencimiento</label>
-                        <input type="text" id="expiry-date" placeholder="MM/AA"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red"
-                            required>
-                    </div>
-                    <div class="w-1/2">
-                        <label for="cvc" class="block text-gray-700 mb-2 font-medium">CVC</label>
-                        <input type="text" id="cvc" placeholder="123"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-brand-red"
-                            required>
-                    </div>
-                </div>
-                <button type="submit" class="btn-primary w-full py-3 px-4 font-medium rounded-lg text-lg">Pagar
-                    Ahora</button>
-            </form>
-        </div>
-    </div>
 
     <!-- 🎥 MODAL DE VIDEO DEL EQUIPO - OPTIMIZADO PARA VIDEOS VERTICALES -->
     <div id="team-video-modal" class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
